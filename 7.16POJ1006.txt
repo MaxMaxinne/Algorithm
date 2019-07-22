@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+const int M[4] = { 23,28,33,23*28*33};
+int p, e, i, d;
+int ex_gcd(int a, int b, int& x, int& y) {
+	if (b == 0) { 
+		x = 1;
+		y = 0; 
+		return a; 
+	}
+	int res = ex_gcd(b, a % b, x, y);
+	int temp = x;
+	x = y;
+	y = temp - a / b * y;
+	return res;
+}
+int inv(int a, int b) {
+	int x, y;
+	int ans = ex_gcd(a, b, x, y);
+	if (ans != 1)
+		return -1;
+	if (x < 0)
+		x = (x % b + b) % b;
+	return x;
+}
+int sy(int *num) {
+	int sum = 0;
+	for (int i = 0; i < 3; i++) {
+		int res = M[3] / M[i];
+		sum = (sum + num[i] * res * inv(res, M[i])) % M[3];
+	}
+	return sum;
+}
+int main()
+{
+	int count = 1;
+	while (true) {
+		cin >> p >> e >> i >> d;
+		if (p == -1&&e==-1&&i==-1&&d==-1)
+			break;
+		int modnum[3] = { p % M[0],e % M[1],i % M[2] };
+		int result = sy(modnum);
+		if (result <= d)
+			result += 23*28*33;
+		cout << "Case " << count++ << ": the next triple peak occurs in " << result-d << " days." << endl;;
+	}
+	return 0;
+}
+
