@@ -1,0 +1,58 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+//十流解法
+/*public:
+    ListNode* rotateRight(ListNode* head, int k){
+        if(!head||!head->next)
+            return head;
+        ListNode* p=head;
+        int length=1;
+        while(p->next){
+            length++;
+            p=p->next;
+        }
+        k=k%length;
+        for(int i=0;i<k;i++)
+            head=move(head);
+        return head;
+        
+    }
+    ListNode* move(ListNode* head){
+        ListNode* p=head;
+        while(p->next->next!=nullptr)
+            p=p->next;
+        p->next->next=move;
+        head=p->next;
+        p->next=NULL;
+        return head;
+    }*/
+//把链表连成环
+public:
+    ListNode* rotateRight(ListNode* head, int k){
+        if(!head||!head->next)
+            return head;
+        ListNode* p=head;
+        int length=1;
+        while(p->next){
+            p=p->next;
+            length++;
+        }
+        p->next=head;
+        k%=length;
+        p=head;
+        for(int i=0;i<length-k-1;i++)
+            p=p->next;
+        head=p->next;
+        p->next=NULL;
+        return head;
+    }
+};
+//move的递归？
+//考虑一下先把链表连成环，更轻易地确定链表头与链表尾
