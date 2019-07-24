@@ -12,7 +12,7 @@ public:
         ListNode* p1=l1;
         ListNode* p2=l2;
         ListNode* temp=nullptr;
-        //²¹ÆëÎ»Êý
+        //Ë›Å¡Ä†Ã«ÃŽÅ¥Ä˜Ã½
         while(p1->next||p2->next){
             if(p1->next==nullptr){
                 temp=l1;
