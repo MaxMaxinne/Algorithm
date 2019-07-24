@@ -7,7 +7,7 @@
  * };
  */
 class Solution {
-//ʮ���ⷨ
+//十流解法
 /*public:
     ListNode* rotateRight(ListNode* head, int k){
         if(!head||!head->next)
@@ -33,7 +33,7 @@ class Solution {
         p->next=NULL;
         return head;
     }*/
-//���������ɻ�
+//把链表连成环
 public:
     ListNode* rotateRight(ListNode* head, int k){
         if(!head||!head->next)
@@ -54,5 +54,5 @@ public:
         return head;
     }
 };
-//move�ĵݹ飿
-//����һ���Ȱ��������ɻ��������׵�ȷ������ͷ������β
+//move的递归？
+//考虑一下先把链表连成环，更轻易地确定链表头与链表尾
