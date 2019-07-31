@@ -48,3 +48,11 @@ class Solution {
 七、二叉树的遍历
 前序中序后序 DFS BFS
 莫里斯遍历
+八、二叉搜索树的个数（LC_96）
+这几天一直在遍历二叉树就没上传。
+二叉搜索树的定义、搜索、输出排序（中序遍历）、后继与先驱、查询、插入与删除、最大与最小关键字
+https://blog.csdn.net/csdn0123zl/article/details/81253648
+后继与先驱的推导
+https://www.cnblogs.com/jasontodd/p/9613836.html //这个少了RP的LP与x的LP的大小比较，现在想到的是因为RP的LP是LP的父节点
+动态规划的初次尝试，设变量、找到递推关系、求解
+还可通过数学演绎法求解：卡特兰数
