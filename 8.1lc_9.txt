@@ -1,0 +1,32 @@
+//需要使用额外空间
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0)
+            return false;
+        vector<int> num;
+        while(x){
+            num.push_back(x%10);
+            x/=10;
+        }
+        for(int i=0;i<num.size()/2;i++){
+            if(num[i]!=num[num.size()-i-1])
+                return false;
+        }
+        return true;
+    }
+};
+//不使用额外空间，翻转一半的数
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0||(x%10==0&&x!=0))//如果数字的最后一位是 0，为了使该数字为回文,则其第一位数字也应该是 0,只有 0 满足这一属性
+            return false;
+        int rev=0;
+        while(x>rev){//始终以x为回文数考虑
+            rev=rev*10+x%10;
+            x/=10;
+        }
+        return x==rev||x==rev/10;//当有奇数个数时
+    }
+};
