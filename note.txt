@@ -56,3 +56,5 @@ https://blog.csdn.net/csdn0123zl/article/details/81253648
 https://www.cnblogs.com/jasontodd/p/9613836.html //这个少了RP的LP与x的LP的大小比较，现在想到的是因为RP的LP是LP的父节点
 动态规划的初次尝试，设变量、找到递推关系、求解
 还可通过数学演绎法求解：卡特兰数
+九、整数翻转
+有字符串解法和数学解法两种办法，字符串解法较慢，优先选择数学解法，注意溢出的判断，这里指定输入为32位int型，所以可以借用long long来判断是否溢出。话说long型为什么也是32位
