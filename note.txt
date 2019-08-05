@@ -78,3 +78,10 @@ class Solution {
 链接：https://leetcode-cn.com/problems/two-sum/solution/que-shi-shu-zi-by-leetcode/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+十二、字符串转换为数字
+对于字符串str，可以直接str[i],此时可作char类型处理（？）
+溢出的处理
+十三、除法的实现
+1、连续倍加的应用
+2、为防止溢出，把所有数转换为负数进行运算
+3、注意a+b时，a，b都做int处理，此时也可能会出现溢出的情况
