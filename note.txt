@@ -60,3 +60,21 @@ https://www.cnblogs.com/jasontodd/p/9613836.html //这个少了RP的LP与x的LP�
 有字符串解法和数学解法两种办法，字符串解法较慢，优先选择数学解法，注意溢出的判断，这里指定输入为32位int型，所以可以借用long long来判断是否溢出。话说long型为什么也是32位
 十、回文数
 字符串解法、数字解法，注意100021,1010这种数，具体看代码
+十一、缺失数字（lc268）（back！！！）
+求和法：值得注意的是发现数组的长度恰好等于题目中的n，另外前n项和有公式哎喂，I'm so vegetable
+排序法不必多说
+位运算：异或运算，仅0 1,1 0时为1，同时异或运算满足结合律，当两数相同时结果为0
+class Solution {
+    public int missingNumber(int[] nums) {
+        int missing = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            missing ^= i ^ nums[i];
+        }
+        return missing;
+    }
+}
+
+作者：LeetCode
+链接：https://leetcode-cn.com/problems/two-sum/solution/que-shi-shu-zi-by-leetcode/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
