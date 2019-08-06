@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if(dividend==0)
+            return 0;
+        bool isPos=true;
+        int ans=0,temp=0,step=-1;
+        if((dividend>0&&divisor<0)||(dividend<0&&divisor>0))
+            isPos=false;
+        if(dividend>0)
+            dividend=-dividend;
+        int div=divisor;
+        if(divisor>0){
+            divisor=-divisor;
+            div=divisor;
+        }
+        while(dividend<=divisor){
+            while(dividend<=div){
+                dividend-=div;
+                if(ans<INT_MIN-step)
+                    return INT_MAX;
+                ans+=step;
+                if(div<INT_MIN-div||step<INT_MIN-step)
+                    break;
+                div+=div;
+                step+=step;
+            }
+            step=-1;
+            div=divisor;
+        }
+        if(isPos){
+            if(ans==INT_MIN)
+                return INT_MAX;
+            ans=-ans;
+        }
+        return ans;
+    }
+};
