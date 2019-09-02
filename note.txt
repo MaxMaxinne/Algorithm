@@ -89,3 +89,6 @@ class Solution {
 滑动窗口的思想，窗口如何滑动是提高效率的关键，同时为了提高查找速度，使用hashset和数字映射字符
 十五、两地调度（lc_1029）
 先认为所有人到A市，然后将A市到B市之间的费用差排序 贪心？
+十五、动态规划
+理解从暴力递归到带备忘录的递归，再到动态规划
+https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-tao-lu-xiang-jie-by-wei-lai-bu-ke/
