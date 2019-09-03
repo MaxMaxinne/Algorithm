@@ -1,11 +1,11 @@
-//前n项和公式
+//脟掳n脧卯潞脥鹿芦脢陆
 class Solution {
 public:
     int arrangeCoins(int n) {
         return (int)((-1+sqrt(1.0/8.0+n)*sqrt(8))/2);
     }
 };
-//迭代
+//碌眉麓煤
 class Solution {
 public:
     int arrangeCoins(int n) {
