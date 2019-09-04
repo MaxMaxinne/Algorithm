@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> sta;
+        map<char,char> dict;
+        dict['(']=')';
+        dict['{']='}';
+        dict['[']=']';
+        if(s=="")
+            return true;
+        if(s.length()%2!=0)
+            return false;
+        for(auto c=s.begin();c!=s.end();c++){
+            if(dict.find(*c)!=dict.end())
+                sta.push(*c);
+            else{
+                if(sta.empty())
+                    return false;//")("情况
+                if(*c!=(*dict.find(sta.top())).second)
+                    return false;
+                else
+                    sta.pop();
+            }
+        }
+        return sta.empty();//非空说明还有括号未闭合
+    }
+};
