@@ -93,3 +93,7 @@ class Solution {
 理解从暴力递归到带备忘录的递归，再到动态规划
 https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-tao-lu-xiang-jie-by-wei-lai-bu-ke/
 注意198题与322题
+十六、细节
+8.20 687
+9.4 20 ")(" "(()" "("
+两道题都有很多细节需要注意,687题需要注意的是题意的理解（怎么样才叫路径），以及通过类的属性储存最大值的技巧
