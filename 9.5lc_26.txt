@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.empty())
+            return 0;
+        int pre=nums[0]-1;
+        auto i=nums.begin();
+        while(i!=nums.end()){
+            if(pre==*i){
+                i=nums.erase(i);
+            }else{
+                pre=*i;
+                i++;
+            }
+        }
+        return nums.size();
+    }
+};
+//双指针
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.empty())
+            return 0;
+        auto i=nums.begin();
+        int len=0;
+        for(auto j=nums.begin();j!=nums.end();j++){
+            if(*i!=*j){
+                i++;
+                len++;
+                *i=*j;
+            }
+        }
+        return len+1;
+    }
+};
