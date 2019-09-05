@@ -97,3 +97,5 @@ https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-tao-lu-xi
 8.20 687
 9.4 20 ")(" "(()" "("
 两道题都有很多细节需要注意,687题需要注意的是题意的理解（怎么样才叫路径），以及通过类的属性储存最大值的技巧
+十七、双指针
+当需要解决连续相等问题方案时，可以通过双指针解决lc_26
