@@ -42,28 +42,34 @@ int strStr(string haystack, string needle) {
   }
 };
 //法三
-int strStr(string haystack, string needle) 
+int ViolentMatch(char* s, char* p)
 {
-	if (!needle.size()) return 0;
-	int p = 0,index=-1;
-	bool haveFind = 0;
-	for (int i = 0; i < haystack.size() && p < needle.size(); i++)
+	int sLen = strlen(s);
+	int pLen = strlen(p);
+ 
+	int i = 0;
+	int j = 0;
+	while (i < sLen && j < pLen)
 	{
-		if (haystack[i] == needle[p])
+		if (s[i] == p[j])
 		{
-			p++;
-			if (!haveFind)
-				index = i;
-			haveFind = 1;
+			//①如果当前字符匹配成功（即S[i] == P[j]），则i++，j++    
+			i++;
+			j++;
 		}
-		else if (haveFind)
+		else
 		{
-			haveFind = 0;
-			p = 0;
-			i=index;
-		}	
+			//②如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0    
+			i = i - j + 1;
+			j = 0;
+		}
 	}
-
-	if (p < needle.size())	return -1;
-	return index;
+	//匹配成功，返回模式串p在文本串s中的位置，否则返回-1
+	if (j == pLen)
+		return i - j;
+	else
+		return -1;
 }
+————————————————
+版权声明：本文为CSDN博主「v_JULY_v」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/v_july_v/article/details/7041827
