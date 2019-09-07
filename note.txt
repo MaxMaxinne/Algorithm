@@ -99,3 +99,12 @@ https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-tao-lu-xi
 两道题都有很多细节需要注意,687题需要注意的是题意的理解（怎么样才叫路径），以及通过类的属性储存最大值的技巧
 十七、双指针
 当需要解决连续相等问题方案时，可以通过双指针解决lc_26
+十八、strStr（lc_28）
+多种解法：
+https://leetcode-cn.com/problems/implement-strstr/solution/c5chong-jie-fa-ku-han-shu-bfkmpbmsunday-by-2227/
+几种匹配算法的解释：
+https://blog.csdn.net/v_july_v/article/details/7041827
+未解之谜
+为什么在删除法二判断匹配字符串与原字符串长度之后，法二法三时间相差如此之多
+测试例
+源串"aaaaaa……  n个a" 匹配串"n-1个a加1个b"
