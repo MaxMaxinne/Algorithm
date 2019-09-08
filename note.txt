@@ -108,3 +108,11 @@ https://blog.csdn.net/v_july_v/article/details/7041827
 为什么在删除法二判断匹配字符串与原字符串长度之后，法二法三时间相差如此之多
 测试例
 源串"aaaaaa……  n个a" 匹配串"n-1个a加1个b"
+十九、二分查找(lc_35)
+注意问题：
+当target比数组最大值大或比最小值小，当数组只有一个元素，、
+start+end可能会溢出
+左边界的移动问题，当区间仅有两个元素时，start=mid无法移动左边界
+循环退出条件
+返回左边界还是右边界
+二分查找博客：https://leetcode-cn.com/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/
