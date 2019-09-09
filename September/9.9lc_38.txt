@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+        string pre="1",str="";
+        char last='1';
+        int count=1;
+        for(int i=n;i>1;i--){
+            auto c=pre.begin()+1;
+            for(;c!=pre.end();c++){
+                if(*c==last)
+                    count++;
+                else{
+                    str+=to_string(count)+last;
+                    count=1;
+                    last=*c;
+                }
+            }
+            str+=to_string(count)+last;
+            pre=str;
+            str="";
+            last=pre[0];
+            count=1;
+        }
+        return pre;
+    }
+};
