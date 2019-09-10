@@ -1,0 +1,70 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string maxPal="",oddtemp="",eventemp;
+        int len=s.length();
+        for(int i=1;i<len;i++){
+            eventemp="";
+            oddtemp="";
+            if(s[i-1]==s[i]){
+                int k=0;
+                while((i-1-k>=0)&&(i+k)<len){
+                    if(s[i-1-k]==s[i+k])
+                        k++;
+                    else
+                        break;
+                }
+                eventemp=s.substr(i-k,2*k);
+                if(eventemp.size()>maxPal.size())
+                    maxPal=eventemp;
+            }
+            if(s[i-1]==s[i+1]){
+                int k=1;
+                while((i-k>=0)&&(i+k<len)){
+                    if(s[i-k]==s[i+k])
+                        k++;
+                    else
+                        break;
+                }
+                oddtemp=s.substr(i-k+1,2*k-1);
+                if(oddtemp.size()>maxPal.size())
+                    maxPal=oddtemp;
+            }  
+        }
+        if(maxPal=="")
+            maxPal=s[0];
+        return maxPal;
+    }
+};
+//封装函数
+class Solution {
+public:
+    int getPalPos(string s,int left,int right){
+       int len=s.length(),i=0;
+       while(left-i>=0&&right+i<len){
+           if(s[left-i]==s[right+i])
+               i++;
+           else
+               break;
+        }
+        return left-i+1;
+    }
+    string longestPalindrome(string s) {
+        string maxPal="";
+        int len=s.length();
+        for(int i=1;i<len;i++){
+            int even=getPalPos(s,i-1,i);
+            int odd=getPalPos(s,i,i);
+            int maxLen=max(2*(i-odd)+1,2*(i-even));
+            if(maxLen>maxPal.length()){
+                if(i-odd+1>i-even)
+                    maxPal=s.substr(odd,maxLen);
+                else
+                    maxPal=s.substr(even,maxLen);
+            }
+        }
+        if(maxPal=="")
+            maxPal=s[0];
+        return maxPal;
+    }
+};
