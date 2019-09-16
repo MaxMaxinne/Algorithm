@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int nearestSum=target+10000000,sum=0;
+        sort(nums.begin(),nums.end());
+        int small=0,mid=1,len=nums.size(),big=len-1;
+        while(mid<len-1){
+            small=0;
+            big=len-1;
+            while(mid!=big&&mid!=small){
+            sum=nums[small]+nums[mid]+nums[big];
+            nearestSum=abs(target-nearestSum)>abs(target-sum)?sum:nearestSum;
+            if(sum>target)
+                big--;
+            else
+                if(sum<target)
+                    small++;
+                else
+                    return target;
+            }
+           mid++;
+        }
+        return nearestSum;
+    }
+};
