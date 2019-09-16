@@ -1,0 +1,31 @@
+class Solution {
+public:
+    map <char,string> m;
+    vector<string> ans;
+    Solution(){
+        m['2']="abc";
+        m['3']="def";
+        m['4']="ghi";
+        m['5']="jkl";
+        m['6']="mno";
+        m['7']="pqrs";
+        m['8']="tuv";
+        m['9']="wxyz";
+    }
+    void combination(string comb,string& digits,int p){
+        if(p==digits.length()){
+            ans.push_back(comb);
+            return;
+        }
+        auto iter=m.find(digits[p]);
+        string str=(*iter).second;
+        for(auto iter=str.begin();iter!=str.end();iter++)
+            combination(comb+*iter,digits,p+1);
+    }
+    vector<string> letterCombinations(string digits) {
+        ans.clear();
+        if(digits!="")
+            combination("",digits,0);
+        return ans;
+    }
+};
