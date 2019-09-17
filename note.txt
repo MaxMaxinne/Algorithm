@@ -116,3 +116,5 @@ start+end可能会溢出
 循环退出条件
 返回左边界还是右边界
 二分查找博客：https://leetcode-cn.com/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/
+二十、双指针（lc_11）
+双指针从暴力法到考虑到指针移动方向的方法，算法的优化方向是向着如何更合理的移动指针方向进行。
