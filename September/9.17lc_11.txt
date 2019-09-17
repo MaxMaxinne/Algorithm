@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void generate(string p,int left,int right,int n,vector<string>& ans){
+        if(left==n&&right==n){
+            ans.push_back(p);
+            return;
+        }
+        if(left<n)
+            generate(p+"(",left+1,right,n,ans);
+        if(right<left&&right<n)
+            generate(p+")",left,right+1,n,ans);
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string> ans;
+        if(n<1)
+            return ans;
+        generate("(",1,0,n,ans);
+        return ans;
+    }
+};
