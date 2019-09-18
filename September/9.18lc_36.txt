@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        set<char> rset;
+        set<char> cset;
+        set<char> bset;
+        for(int r=0;r<9;r++){
+            for(int c=0;c<9;c++){
+                //行
+                if(rset.find(board[r][c])!=rset.end())
+                    return false;
+                if(board[r][c]!='.')
+                    rset.insert(board[r][c]);
+                //列
+                if(cset.find(board[c][r])!=cset.end())
+                    return false;
+                if(board[c][r]!='.')
+                    cset.insert(board[c][r]);
+                //块
+                int br=r/3;
+                int bc=r%3;
+                if(bset.find(board[3*br+c/3][3*bc+c%3])!=bset.end())
+                      return false;
+                if(board[3*br+c/3][3*bc+c%3]!='.')
+                      bset.insert(board[3*br+c/3][3*bc+c%3]);
+            }
+            rset.clear();
+            cset.clear();
+            bset.clear();
+        }
+        return true;
+    }
+};
