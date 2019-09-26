@@ -118,3 +118,5 @@ start+end可能会溢出
 二分查找博客：https://leetcode-cn.com/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/
 二十、双指针（lc_11）
 双指针从暴力法到考虑到指针移动方向的方法，算法的优化方向是向着如何更合理的移动指针方向进行。
+二一、再谈动态规划
+尝试了两道动态规划，lc_121,lc_53思考一下这两道题从暴力法到动态规划的过程，还是要从最小子问题出发，找到状态转移方程
