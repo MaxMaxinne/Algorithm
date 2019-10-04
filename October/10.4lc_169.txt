@@ -1,0 +1,45 @@
+//排序
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int maxNums=0,maxNow=0,maxN=0;
+        sort(nums.begin(),nums.end());
+        auto i=nums.begin();
+        while(i!=nums.end()){
+            int now=*i;
+            while(i!=nums.end()&&now==*i){
+                i++;
+                maxNow++;
+            }
+            if(maxNums<maxNow)
+                maxN=*(i-1);
+            maxNums=max(maxNums,maxNow);
+            maxNow=0;
+        }
+        return maxN;
+    }
+};
+//优化后的排序（众数必然出现在n/2初）
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        return nums[nums.size()/2];
+    }
+};
+//投票
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int vote=0,num=nums[0];
+        for(auto x:nums){
+            if(vote==0)
+                num=x;
+            if(x==num)
+                vote++;
+            else
+                vote--;
+        }
+        return num;
+    }
+};
