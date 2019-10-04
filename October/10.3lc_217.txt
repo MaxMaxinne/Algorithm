@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int> m;
+        for(auto ele:nums){
+            if(m.find(ele)==m.end())
+                m.insert(ele);
+            else
+                return true;
+        }
+        return false;
+    }
+};
