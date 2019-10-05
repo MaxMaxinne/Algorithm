@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        map<int,int> m;
+        for(int i=0;i<nums.size();i++){
+            auto ele=m.find(nums[i]);
+            if(ele!=m.end()&&(i-ele->second)<=k)
+                return true;
+            else
+                m[nums[i]]=i;
+        }
+        return false;
+    }
+};
+//优化空间复杂度
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        map<int,int> m;
+        for(int i=0;i<nums.size();i++){
+            auto ele=m.find(nums[i]);
+            if(ele!=m.end())
+                return true;
+            m[nums[i]]=i;
+            if(m.size()>k)
+                m.erase(nums[i-k]);
+        }
+        return false;
+    }
+};
