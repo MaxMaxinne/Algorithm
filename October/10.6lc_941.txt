@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool validMountainArray(vector<int>& A) {
+        if(A.size()<3||A[1]<=A[0])
+            return false;
+        int last=INT_MIN;
+        bool flag=true;
+        for(int ele:A){
+            if(ele==last)
+                return false;
+            if(flag){
+                if(ele>last)
+                    last=ele;
+                else{
+                    last=ele;
+                    flag=false;
+                }
+            }else{
+                if(ele<last)
+                    last=ele;
+                else
+                    return false;
+            }
+        }
+        return !flag;
+    }
+};
