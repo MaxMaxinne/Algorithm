@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int gcd(int a,int b){
+        if(a<b){
+            int temp=a;
+            a=b;
+            b=temp;
+        }
+        return (a%b==0)?b:gcd(b,a%b);
+    }
+    bool hasGroupsSizeX(vector<int>& deck) {
+        map<int,int> m;
+        for(int ele:deck){
+            auto iter=m.find(ele);
+            if(iter!=m.end())
+                iter->second++;
+            else
+                m[ele]=1;
+        }
+        int x=0;
+        for(pair ele:m){
+            if(x==0)
+                x=ele.second;
+            else
+                x=gcd(x,ele.second);
+        }
+        return x>=2;
+    }
+};

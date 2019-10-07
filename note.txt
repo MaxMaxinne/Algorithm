@@ -126,3 +126,4 @@ start+end可能会溢出
 二十二、求得众数（lc_169)
 https://leetcode-cn.com/problems/majority-element/solution/qiu-zhong-shu-by-leetcode-2/
 在这个题解法中，投票、随机、排序都体现了对于条件众数出现次数大于n/2的充分利用
+二十三、求n个数的公约数（lc_914)
