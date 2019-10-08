@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if(matrix.empty()||matrix[0].empty())
+            return false;
+        int rows=matrix.size(),cols=matrix[0].size(),left=0,right=rows*cols-1,mid=(left+right)/2;
+        int temp_row,temp_col;
+        while(left<=right){
+            temp_row=mid/cols;
+            temp_col=mid%cols;
+            if(matrix[temp_row][temp_col]==target)
+                return true;
+            if(matrix[temp_row][temp_col]>target)
+                right=mid-1;
+            else
+                left=mid+1;
+            mid=(left+right)/2;
+        }
+        return false;
+    }
+};
