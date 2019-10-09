@@ -132,3 +132,5 @@ https://leetcode-cn.com/problems/majority-element/solution/qiu-zhong-shu-by-leet
 循环继续条件left<=right
 边界值更新left=mid+1;right=mid-1;
 矩阵中元素的索引可以计算（将二维数组展开）
+二十五、lc_561数组拆分
+假设数组已经排好序，要使划分的数对之中的较小值的和最大，应该使没有被选中计算和的数最小，假如从数组头部开始挑选，首先应该选择第二个元素牺牲，接下来只能选第四个，因为必须要有一个比他小的数与他配对，以此类推
