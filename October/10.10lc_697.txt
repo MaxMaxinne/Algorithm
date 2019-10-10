@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        map<int,int> start;
+        map<int,int> end;
+        map<int,int> m;
+        int len=nums.size(),maxN=0,minL=INT_MAX;
+        for(int i=0;i<len;i++){
+            if(m.find(nums[i])!=m.end()){
+                m[nums[i]]++;
+                end[nums[i]]=i;
+                maxN=max(maxN,m[nums[i]]);
+            }else{
+                m[nums[i]]=1;
+                start[nums[i]]=i;
+                end[nums[i]]=i;
+                maxN=max(1,maxN);
+            }
+        }
+        for(pair p:m){
+            if(p.second==maxN){
+                auto s=start.find(p.first);
+                auto e=end.find(p.first);
+                minL=min(e->second-s->second,minL);
+            }
+        }
+        return minL+1;
+    }
+};
