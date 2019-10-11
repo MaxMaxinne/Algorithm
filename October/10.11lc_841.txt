@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void searchRoom(int roomAt,vector<bool>& visitedRooms,vector<vector<int>>& key){
+        visitedRooms[roomAt]=true;
+        for(int k:key[roomAt])
+            if(!visitedRooms[k])
+                searchRoom(k,visitedRooms,key);
+            
+    }
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        vector<bool> v(rooms.size(),false);
+        v[0]=true;
+        searchRoom(0,v,rooms);
+        for(bool ele:v){
+            if(!ele)
+                return false;
+        }
+        return true;
+    }
+};
