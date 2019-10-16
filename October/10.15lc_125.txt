@@ -1,0 +1,32 @@
+class Solution {
+public:
+    char format(char c){
+        if(c>='A'&&c<='Z')
+            return c+32;
+        if(c>='a'&&c<='z'||c>='0'&&c<='9')
+            return c;
+        return ' ';
+    }
+    bool isPalindrome(string s) {
+        int left=0,right=s.length()-1;
+        while(left<right){
+            while(format(s[left])==' '){
+                if(left<right)
+                left++;
+                else
+                    return true;
+            }
+            while(format(s[right])==' '){
+                if(left<right)
+                right--;
+                else
+                    return true;
+            }
+            if(format(s[left])!=format(s[right]))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+};

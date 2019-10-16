@@ -137,3 +137,5 @@ https://leetcode-cn.com/problems/majority-element/solution/qiu-zhong-shu-by-leet
 二十六、深度优先搜索，广度优先搜索
 深度优先-栈，递归
 广度优先-队列
+二十七、杨辉三角形(lc_119)
+节省空间的方法是在计算每一层时不使用last，而是采用覆盖current，注意需要倒序覆盖
