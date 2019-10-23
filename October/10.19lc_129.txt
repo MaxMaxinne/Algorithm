@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void getSum(int* sum,int local_sum,TreeNode* n){
+        if(!n->left&&!n->right){
+            local_sum=local_sum*10+n->val;
+            *sum+=local_sum;
+            return;
+        }
+        if(n->left)
+            getSum(sum,local_sum*10+n->val,n->left);
+        if(n->right)
+            getSum(sum,local_sum*10+n->val,n->right);
+    }
+    int sumNumbers(TreeNode* root) {
+        if(!root)
+            return 0;
+        int ans=0;
+        getSum(&ans,0,root);
+        return ans;
+    }
+};

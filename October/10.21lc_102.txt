@@ -1,0 +1,19 @@
+class Solution {
+public:
+     int get(int depth,TreeNode* node){
+         if(node->left==nullptr&&node->right==nullptr)
+             return depth;
+         int left=INT_MAX,right=INT_MAX;
+         if(node->left!=nullptr)
+             left=get(depth+1,node->left);
+         if(node->right!=nullptr)
+             right=get(depth+1,node->right);
+         return min(left,right);
+         
+     }
+    int minDepth(TreeNode* root) {
+        if(root==nullptr)
+            return 0;
+       return get(1,root);
+    }
+};
