@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        set<int> s;
+        int sum=0;
+        for(int x:nums){
+            if(s.find(x)==s.end()){
+                sum-=x*2;
+                s.insert(x);
+            }
+            sum+=x;
+        }
+        return -sum;
+    }
+};
+//位运算，实现O（1）空间复杂度
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int n=nums[0];
+        for(auto i=nums.begin()+1;i!=nums.end();i++)
+            n^=*i;
+        return n;
+    }
+};

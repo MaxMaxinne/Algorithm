@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int len=0;
+        auto iter=s.rbegin();
+        for(;iter!=s.rend()&&*iter==' ';iter++);
+        for(;iter!=s.rend();iter++){
+            if(*iter!=' ')
+                len++;
+            else
+                break;
+        }
+        return len;
+    }
+};
