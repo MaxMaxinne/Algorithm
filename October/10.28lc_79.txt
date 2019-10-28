@@ -1,0 +1,58 @@
+//法一
+class Solution {
+public:
+    bool helpFunc(vector<vector<char>> board,string& word,int i,int j,int p){
+        if(i<0||i>=board.size()||j<0||j>=board[0].size())
+            return false;
+        if(board[i][j]!=word[p])
+            return false;
+        if(p==word.length()-1)
+            return true;
+        board[i][j]=' ';
+        return helpFunc(board,word,i+1,j,p+1)||helpFunc(board,word,i-1,j,p+1)||helpFunc(board,word,i,j+1,p+1)||helpFunc(board,word,i,j-1,p+1);
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        int width=board[0].size(),height=board.size();
+        for(int i=0;i<height;i++)
+            for(int j=0;j<width;j++)
+                 if(board[i][j]==word[0])
+                     if(helpFunc(board,word,i,j,0))
+                         return true;
+        return false;
+    }
+};
+//法二
+class Solution {
+public:
+    vector<vector<int>> direction;
+    Solution(){
+        direction={{1,0},{-1,0},{0,1},{0,-1}};
+    }
+    bool helpFunc(vector<vector<char>>& board,string& word,int i,int j,int p){
+        if(i<0||i>=board.size()||j<0||j>=board[0].size())
+            return false;
+        if(board[i][j]!=word[p])
+            return false;
+        if(p==word.length()-1)
+            return true;
+        char mychar=board[i][j];
+        board[i][j]=' ';
+        for(int k=0;k<4;k++){
+            int new_i=i+direction[k][0];
+            int new_j=j+direction[k][1];
+            if(helpFunc(board,word,new_i,new_j,p+1))
+                return true;
+        }
+        board[i][j]=mychar;
+        return false;
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        int width=board[0].size(),height=board.size();
+        for(int i=0;i<height;i++)
+            for(int j=0;j<width;j++)
+                 if(board[i][j]==word[0])
+                     if(helpFunc(board,word,i,j,0))
+                         return true;
+        return false;
+    }
+};
