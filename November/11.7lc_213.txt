@@ -1,0 +1,36 @@
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if(lists.empty())
+            return nullptr;
+        vector<ListNode*> p;
+        int minValue=INT_MAX,index=0,count=0;
+        for(ListNode* n:lists){
+            p.push_back(n);
+            if(!n)
+                count++;
+        }
+        ListNode* root=nullptr,*n1=nullptr;
+        while(count<lists.size()){
+            minValue=INT_MAX;
+            for(int i=0;i<p.size();i++){
+                if(p[i]&&p[i]->val<minValue){
+                    minValue=p[i]->val;
+                    index=i;
+                }
+            }
+            if(root){
+                n1->next=new ListNode(minValue);
+                n1=n1->next;
+        }
+            else{
+                root=new ListNode(minValue);
+                n1=root;
+            }
+            p[index]=p[index]->next;
+            if(!p[index])
+                count++;
+        }
+        return root;
+    }
+};

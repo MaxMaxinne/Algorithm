@@ -1,0 +1,19 @@
+class Solution {
+public:
+    ListNode* newHead;
+    ListNode* reverse(ListNode* node){
+        if(node->next==nullptr){
+            newHead=node;
+            return node;
+        }
+        reverse(node->next)->next=node;
+        return node;
+    }
+    ListNode* reverseList(ListNode* head) {
+        if(!head)
+            return head;
+        reverse(head);
+        head->next=nullptr;
+        return newHead;
+    }
+};

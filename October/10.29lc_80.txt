@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int size=nums.size();
+        if(size<=2)
+            return size;
+        int p1=2,p2=2;
+        for(;p1<size;p1++){
+            if(nums[p1]!=nums[p2-2])
+                nums[p2++]=nums[p1];
+        }
+        return p2;
+    }
+};
