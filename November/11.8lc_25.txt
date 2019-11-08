@@ -1,0 +1,34 @@
+class Solution {
+public:
+    ListNode* newHead;
+    ListNode* nextNode;
+    ListNode* reverseK(ListNode* n,int p,int k){
+        if(n->next==nullptr||p==k-1){
+            newHead=n;
+            nextNode=n->next;
+            return n;
+        }
+        reverseK(n->next,p+1,k)->next=n;
+        return n;
+    }
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if(k==1)
+            return head;
+        ListNode* l=head;
+        int len=0;
+        for(;l;l=l->next,len++);
+        if(k>len)
+            return head;
+        reverseK(head,0,k);
+        ListNode* root=newHead;
+        ListNode* tail1=head,*tail2=nullptr;
+        for(int i=1;i<len/k;i++){
+            tail2=nextNode;
+            reverseK(nextNode,0,k);
+            tail1->next=newHead;
+            tail1=tail2;
+        }
+        tail1->next=nextNode;
+        return root;
+    }
+};
