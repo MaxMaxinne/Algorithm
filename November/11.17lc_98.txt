@@ -1,0 +1,16 @@
+#define ll long long
+class Solution {
+public:
+    bool isValid(TreeNode* node,ll minNum,ll maxNum){
+        if(!node)
+            return true;
+        if(minNum>=node->val)
+            return false;
+        if(maxNum<=node->val)
+            return false;
+        return isValid(node->left,minNum,maxNum>node->val?node->val:maxNum)&&isValid(node->right,minNum>node->val?minNum:node->val,maxNum);
+    }
+    bool isValidBST(TreeNode* root) {
+        return isValid(root,LONG_MIN,LONG_MAX);
+    }
+};
