@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int sum;
+    void add(TreeNode* node,bool isLeft){
+        if(!node)
+            return;
+        if(!node->left&&!node->right&&isLeft){
+            sum+=node->val;
+            return;
+        }
+        add(node->left,true);
+        add(node->right,false);
+    }
+    int sumOfLeftLeaves(TreeNode* root) {
+        sum=0;
+        add(root,false);
+        return sum;
+    }
+};

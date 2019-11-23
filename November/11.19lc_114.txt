@@ -1,0 +1,15 @@
+    TreeNode* last;
+    void getList(TreeNode* n){
+        if(!n)
+            return;
+        last->right=n;
+        last=n;
+        TreeNode* right=n->right;
+        getList(n->left);
+        n->left=nullptr;
+        getList(right);
+    }
+    void flatten(TreeNode* root) {
+        last=new TreeNode(0);
+        getList(root);
+    }
