@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void midorder(TreeNode* n,vector<int>& v){
+        if(!n)
+            return;
+        midorder(n->left,v);
+        v.push_back(n->val);
+        midorder(n->right,v);
+    }
+    
+    bool findTarget(TreeNode* root, int k) {
+        vector<int>num;
+        midorder(root,num);
+        int left=0,right=num.size()-1;
+        while(left<right){
+            int sum=num[left]+num[right];
+            if(sum>k)
+                right--;
+            else
+                if(sum<k)
+                    left++;
+                else
+                    return true;
+        }
+        return false;
+    }
+};

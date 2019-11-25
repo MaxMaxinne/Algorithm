@@ -1,0 +1,35 @@
+#define   ll long long
+class Solution {
+public:
+    string fractionToDecimal(int numerator, int denominator) {
+        if(numerator==0)
+            return "0";
+        string ans="";
+        if((numerator<0&&denominator>0)||(denominator<0&&numerator>0))
+            ans.push_back('-');
+        ll n1=abs(static_cast<long long>(numerator));
+        ll n2=abs(static_cast<long long>(denominator));
+        ll n=n1/n2;
+        ans+=to_string(n);
+        ans.push_back('.');
+        ll remain=n1-n*n2;
+        map<unsigned,unsigned> rec;
+        rec[remain]=ans.length();
+        while(remain!=0){
+            remain*=10;
+            n=remain/n2;
+            remain-=n*n2;
+            ans+=to_string(n);
+            if(rec.count(remain)==1){
+                ans.insert(rec[remain],"(");
+                ans.push_back(')');
+                break;
+            }
+            else
+                rec[remain]=ans.length();
+        }
+        if(*ans.rbegin()=='.')
+            ans=ans.substr(0,ans.length()-1);
+        return ans;
+    }
+};
