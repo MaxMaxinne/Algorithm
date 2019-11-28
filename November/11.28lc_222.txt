@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if(!root)
+            return 0;
+        return countNodes(root->left)+countNodes(root->right)+1;
+    }
+};
+//一种更针对满二叉树的想法(JAVA)
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null){
+           return 0;
+        } 
+        int left = countLevel(root.left);
+        int right = countLevel(root.right);
+        if(left == right){
+            return countNodes(root.right) + (1<<left);
+        }else{
+            return countNodes(root.left) + (1<<right);
+        }
+    }
+    private int countLevel(TreeNode root){
+        int level = 0;
+        while(root != null){
+            level++;
+            root = root.left;
+        }
+        return level;
+    }
+}
+
+作者：xiao-ping-zi-5
+链接：https://leetcode-cn.com/problems/count-complete-tree-nodes/solution/chang-gui-jie-fa-he-ji-bai-100de-javajie-fa-by-xia/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
