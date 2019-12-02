@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int c=0;
+        string ans="";
+        auto n1=num1.rbegin(),n2=num2.rbegin();
+        while(n1!=num1.rend()||n2!=num2.rend()){
+            int m1=n1==num1.rend()?0:(*n1-'0');
+            int m2=n2==num2.rend()?0:(*n2-'0');
+            int num=m1+m2+c;
+            ans.push_back(num%10+'0');
+            c=num/10;
+            if(n1!=num1.rend())
+                n1++;
+            if(n2!=num2.rend())
+                n2++;
+        }
+        if(c!=0)
+            ans.push_back(c+'0');
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
