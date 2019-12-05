@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans;
+        map<int,int> m;
+        stack<int> s;
+        for(int n:nums2){
+            while(!s.empty()&&n>s.top()){
+                m[s.top()]=n;
+                s.pop();
+            }
+            s.push(n);
+        }
+        for(int n:nums1){
+            auto item=m.find(n);
+            if(item!=m.end())
+                ans.push_back(item->second);
+            else
+                ans.push_back(-1);
+        }
+        return ans;
+    }
+};

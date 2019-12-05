@@ -1,0 +1,39 @@
+class Solution {
+public:
+    string helpfunc(string& s,int& i){
+        string ans="",temp="";
+        bool inblock=false;
+        int n=0;
+        for(;i<s.length();i++){
+            if(s[i]>='0'&&s[i]<='9'){
+                if(inblock){
+                    temp+=helpfunc(s,i);
+                    continue;
+                }else{
+                    n=n*10+s[i]-'0';
+                }
+            }
+            if(s[i]=='[')
+                inblock=true;
+            if(s[i]==']'){
+                for(;n>0;n--)
+                    ans+=temp;
+                break;
+            }
+            if(s[i]>='a'&&s[i]<='z'||s[i]>='A'&&s[i]<='Z')
+                temp.push_back(s[i]);
+        }
+        return ans;
+    }
+    string decodeString(string s) {
+        string ans="";
+        for(int i=0;i<s.length();i++){
+            if(s[i]>='0'&&s[i]<='9')
+                ans+=helpfunc(s,i);
+            else
+                if(s[i]>='a'&&s[i]<='z'||s[i]>='A'&&s[i]<='Z')
+                    ans.push_back(s[i]);
+        }
+        return ans;
+    }
+};

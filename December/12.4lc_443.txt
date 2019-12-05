@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int p1=0,p2=0,n=0,len=chars.size();
+        char last=chars[0];
+        while(p1<=len){
+            if(p1==len||chars[p1]!=last){
+                chars[p2++]=last;
+                if(n!=1){
+                    string num=to_string(n);
+                    for(char c:num)
+                        chars[p2++]=c;
+                }
+                if(p1==len)
+                    break;
+                last=chars[p1];
+                n=0;
+            }
+            p1++;
+            n++;
+        }
+        return p2;
+    }
+};

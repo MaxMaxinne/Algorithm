@@ -286,3 +286,7 @@ class Solution {
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 计算2的n次幂：n乘2左移1位 n<<1,那么2^n乘n个2,1<<n,只有整数才能做移位
+三十五、单调栈（lc_496)
+一种特殊逻辑的栈，似乎专门解决下一个更大元素这个问题（?）
+介绍：
+https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/
