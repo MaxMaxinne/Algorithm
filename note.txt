@@ -290,3 +290,5 @@ class Solution {
 一种特殊逻辑的栈，似乎专门解决下一个更大元素这个问题（?）
 介绍：
 https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/
+三十六、验证栈序列（lc_946)
+主要有两种思想，一种是根据pushed验证poped顺序，另一种是根据poped验证pushed顺序，第一种好一点
