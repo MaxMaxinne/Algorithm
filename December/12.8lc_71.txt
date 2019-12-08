@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string simplifyPath(string path) {
+        vector<string> s;
+        string foldername="";
+        string simpath="";
+        for(int i=0;i<path.length();i++){
+            if(path[i]=='/')
+                continue;
+            if(path[i]=='.'&&path[i+1]=='.'&&(path[i+2]=='/'||path[i+2]=='\0')){
+                    i++;
+                if(!s.empty())
+                    s.pop_back();
+                continue;
+            }
+            if(path[i]=='.'&&(path[i+1]=='/'||path[i+1]=='\0'))
+                continue;
+            while(path[i]!='/'&&path[i]!='\0')
+                foldername+=path[i++];
+            s.push_back(foldername);
+            foldername="";
+        }
+        for(string t:s){
+            simpath+="/"+t;
+        }
+        if(s.empty())
+            simpath.push_back('/');
+        return simpath;
+    }
+};
