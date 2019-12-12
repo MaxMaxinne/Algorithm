@@ -1,0 +1,45 @@
+class MinStack {
+private:
+    stack<int> min_stack;
+    int* array
+        ,top_pointer
+        ,length
+        ,array_size;
+    void expand(){
+        int *temp=new int[array_size*2];
+        copy(array,array+array_size,temp);
+        delete []array;
+        array=temp;
+        array_size*=2;
+    }
+public:
+    MinStack() {
+        array=new int[10];
+        length=0;
+        array_size=10;
+        top_pointer=-1;
+    }
+    
+    void push(int x) {
+        if(min_stack.empty()||x<=min_stack.top())
+            min_stack.push(x);
+        array[++top_pointer]=x;
+        length++;
+        if(length==array_size)
+            expand();
+    }
+    
+    void pop() {
+        if(min_stack.top()==array[top_pointer])
+            min_stack.pop();
+        top_pointer--;
+    }
+    
+    int top() {
+        return array[top_pointer];
+    }
+    
+    int getMin() {
+        return min_stack.top();
+    }
+};

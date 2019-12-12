@@ -292,3 +292,5 @@ class Solution {
 https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/
 三十六、验证栈序列（lc_946)
 主要有两种思想，一种是根据pushed验证poped顺序，另一种是根据poped验证pushed顺序，第一种好一点
+三十七、3的幂(lc_326)
+说三种解法思路，一种是笨办法，第二种是转换进制，使用3进制的表示数字之后再用正则表达式匹配，第三种是利用一个小trick,int中3的幂最大的是1162261467，利用这个数与输入的数相除看余数即可
