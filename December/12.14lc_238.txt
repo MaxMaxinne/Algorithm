@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int len=nums.size(),right=1,left=1;
+        vector<int> ans(len,1);
+        for(int i=1;i<len;i++){
+            left*=nums[i-1];
+            ans[i]*=left;
+            right*=nums[len-i];
+            ans[len-1-i]*=right;
+        }
+        return ans;
+    }
+};
