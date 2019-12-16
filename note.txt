@@ -298,3 +298,5 @@ https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-j
 把数组环状一方面要用取余运算，同时也可以直接使用两倍数组长度计数，来保证不会死循环
 三十九、lc_238
 非常有趣的题目，做出这个题的关键是认识到当前数的值等于该数左侧的数的乘积与右侧数的乘积的乘积
+四十、链表
+不要忘记fakehead的作用
