@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        int length=str.length(),start=0,ans=0;
+        if(length==0)
+            return 0;
+        bool isPos=true;
+        for(start=0;start<length&&str[start]==' ';start++);
+        if(start==length)
+           return 0;
+        if(str[start]!='+'&&str[start]!='-'&&(str[start]<'0'||str[start]>'9'))
+            return 0;
+        if(str[start]=='+'||str[start]=='-'){
+            if(str[start]=='-')
+                isPos=false;
+            if(++start>=length)
+                return 0;
+        }
+        while(start<length&&str[start]>='0'&&str[start]<='9'){
+            if(isPos){
+                if(ans>INT_MAX/10||(ans==INT_MAX/10&&(str[start]-'0')>7))
+                    return INT_MAX;
+                ans=ans*10+(int(str[start])-'0');
+            }
+            else {
+                if(ans<INT_MIN/10||(ans==INT_MIN/10&&(str[start]-'0')>8))
+                    return INT_MIN;
+                ans=ans*10-(int(str[start])-'0');
+            }
+            start++;
+        }
+        return ans;
+    }
+};

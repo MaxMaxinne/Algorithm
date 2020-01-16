@@ -1,0 +1,75 @@
+//法一
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle=="")
+            return 0;
+        bool flag=false;
+        int p1=0,len1=haystack.length(),len2=needle.length();
+        while(p1<len1){
+            if(haystack[p1]==needle[0]){
+                if(p1+len2>len1)
+                    return -1;
+                if(haystack.substr(p1,len2)==needle)
+                    return p1;
+            }
+            p1++;
+        }
+        return -1;
+    }
+};
+//法二
+class Solution {
+public:
+int strStr(string haystack, string needle) {
+	if (needle=="") return 0;
+    int p1=0,p2=0,len1=haystack.length(),len2=needle.length();
+    while(p1<len1){
+        while(p1<len1&&p2<len2&&haystack[p1]==needle[p2]){
+            if(p1+len2-p2>len1)
+                return -1;
+            p1++;
+            p2++;
+        }
+        if(p2==len2)
+            return p1-p2;
+        else{
+            p1=p1-p2+1;
+            p2=0;
+        }
+    }
+    return -1;
+  }
+};
+//法三
+int ViolentMatch(char* s, char* p)
+{
+	int sLen = strlen(s);
+	int pLen = strlen(p);
+ 
+	int i = 0;
+	int j = 0;
+	while (i < sLen && j < pLen)
+	{
+		if (s[i] == p[j])
+		{
+			//①如果当前字符匹配成功（即S[i] == P[j]），则i++，j++    
+			i++;
+			j++;
+		}
+		else
+		{
+			//②如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0    
+			i = i - j + 1;
+			j = 0;
+		}
+	}
+	//匹配成功，返回模式串p在文本串s中的位置，否则返回-1
+	if (j == pLen)
+		return i - j;
+	else
+		return -1;
+}
+————————————————
+版权声明：本文为CSDN博主「v_JULY_v」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/v_july_v/article/details/7041827

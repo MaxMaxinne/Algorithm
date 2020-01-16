@@ -1,0 +1,48 @@
+//自底向上
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1||n==2)
+            return n;
+        int per=2,dper=1,ans=0;
+        for(int i=3;i<=n;i++){
+            ans=per+dper;
+            dper=per;
+            per=ans;
+        }
+        return ans;
+    }
+};
+//自顶向下
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n<2)
+            return 1;
+        vector<int> memory(n+1,0);
+        memory[1]=1;
+        memory[2]=2;
+        return climb(n,memory);
+    }
+    int climb(int n,vector<int>& memory){
+        int n1,n2;
+        if(n==0)
+            return 0;
+        if(n<0)
+            return -1;
+        if(memory[n]!=0)
+            return memory[n];
+        n1=climb(n-1,memory);
+        n2=climb(n-2,memory);
+        if(n1<0){
+            memory[n]=n2;
+            return n2;
+        }
+        if(n2<0){
+            memory[n]=n1;
+            return n1;
+        }
+        memory[n]=n1+n2;
+        return n1+n2;
+    }
+};

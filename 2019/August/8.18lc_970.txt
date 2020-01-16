@@ -1,0 +1,35 @@
+//注意x或y为1时的情况.
+class Solution {
+public:
+    vector<int> powerfulIntegers(int x, int y, int bound) {
+        int i=0,j=0,temp=0;
+        vector<int> ans;
+        set<int> s;
+        if(x<y){
+            temp=y;
+            y=x;
+            x=temp;
+        }else if(x==1&&y==1){
+            if(2<=bound)
+                ans.push_back(2);
+            return ans;
+        }
+        while(true){
+            if((temp=pow(x,i)+pow(y,j))<=bound){
+                if(s.find(temp)==s.end()){
+                    ans.push_back(temp);
+                    s.insert(temp);
+                }
+                i++;
+            }else{
+                i=0;
+                j++;
+                if(pow(x,i)+pow(y,j)>bound||y==1)
+                    break;
+					
+					
+            }
+        }
+        return ans;
+    }
+};

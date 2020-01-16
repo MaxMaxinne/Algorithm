@@ -1,0 +1,17 @@
+//Ç°nÏîºÍ¹«Ê½
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        return (int)((-1+sqrt(1.0/8.0+n)*sqrt(8))/2);
+    }
+};
+//µü´ú
+class Solution {
+public:
+    int arrangeCoins(int n) {
+             int k=1;
+        while((n-=k)>=0)
+            k++;
+        return --k;
+    }
+};
