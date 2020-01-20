@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
+        int r1=nums.size(),c1=nums[0].size(),size=r1*c1;
+        if(r*c!=size)
+            return nums;
+        vector<vector<int>> ans(r,vector<int>(c,0));
+        int p1_r=0,p1_c=0,p_r=0,p_c=0;
+        while(p1_r<r1){
+            ans[p_r][p_c++]=nums[p1_r][p1_c++];
+            if(p_c>=c){
+                p_c=0;
+                p_r++;
+            }
+            if(p1_c>=c1){
+                p1_c=0;
+                p1_r++;
+            }
+        }
+        return ans;
+    }
+};

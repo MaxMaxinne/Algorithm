@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int countSegments(string s) {
+        int sum=0;
+        bool flag=true;
+        for(int i=0;i<s.length();i++){
+            while(i<s.length()&&s[i]==' '){
+                i++;
+                flag=true;
+            }
+            if(flag&&i<s.length()){
+                sum++;
+                flag=false;
+            }
+        }
+        return sum;
+    }
+};

@@ -300,3 +300,5 @@ https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-j
 非常有趣的题目，做出这个题的关键是认识到当前数的值等于该数左侧的数的乘积与右侧数的乘积的乘积
 四十、链表
 不要忘记fakehead的作用
+四十一、重塑矩阵(lc_566)
+这道题给我们的提醒是多维矩阵的问题能不能转化为一维矩阵来解决。
