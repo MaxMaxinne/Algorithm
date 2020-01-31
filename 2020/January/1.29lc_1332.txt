@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int removePalindromeSub(string s) {
+        if(s=="")
+            return 0;
+        int len=s.length(),p1=0,p2=len-1;
+        while(p1<p2){
+            if(s[p1]!=s[p2])
+                break;
+            p1++;
+            p2--;
+        }
+        if(p1>=p2)
+            return 1;
+        return 2;
+    }
+};

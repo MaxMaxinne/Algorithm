@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool* isVisited;
+    void dfs(vector<vector<int>>& M,int row){
+        isVisited[row]=true;
+        for(int i=0;i<M.size();i++){
+            if(M[row][i]==1&&!isVisited[i])
+                dfs(M,i);
+        }
+    }
+    int findCircleNum(vector<vector<int>>& M) {
+        int n=M.size();
+        isVisited=new bool[n];
+        for(int i=0;i<n;i++)
+            isVisited[i]=false;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            if(!isVisited[i]){
+               dfs(M,i);
+               sum++;
+            }
+        }
+        return sum;
+    }
+};

@@ -1,0 +1,34 @@
+class hall{
+public:
+    int id;
+    int rating;
+    hall(int id,int rating):id(id),rating(rating){}
+};
+bool cmp_id(const hall& h1,const hall& h2){
+    return h1.id>h2.id;
+}
+bool cmp_rating(const hall& h1,const hall& h2){
+    return h1.rating>h2.rating;
+}
+class Solution {
+public:
+    vector<int> filterRestaurants(vector<vector<int>>& restaurants, int veganFriendly, int maxPrice, int maxDistance) {
+        vector<int> ans;
+        vector<hall> qualified;
+        for(auto ele:restaurants){
+            if(veganFriendly)
+                if(!ele[2])
+                    continue;
+            if(maxPrice<ele[3])
+                continue;
+            if(maxDistance<ele[4])
+                continue;
+            qualified.push_back(hall(ele[0],ele[1]));
+        }
+        sort(qualified.begin(),qualified.end(),cmp_id);
+        stable_sort(qualified.begin(),qualified.end(),cmp_rating);
+        for(hall ele:qualified)
+            ans.push_back(ele.id);
+        return ans;
+    }
+};
