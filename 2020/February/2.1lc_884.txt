@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string A, string B) {
+        map<string,int> m;
+        vector<string> ans;
+        string str="";
+        string t=A+" "+B;
+        for(char c:t){
+            if(c==' '){
+                auto iter=m.find(str);
+                if(iter==m.end())
+                    m[str]=1;
+                else
+                    iter->second++;
+                str="";
+            }else
+                str.push_back(c);
+        }
+        auto iter=m.find(str);
+        if(iter==m.end())
+            m[str]=1;
+        else
+            iter->second++;
+        for(pair<string,int> p:m){
+            if(p.second==1)
+                ans.push_back(p.first);
+        }
+        return ans;
+    }
+};
