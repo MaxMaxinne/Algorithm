@@ -1,0 +1,31 @@
+class car{
+public:
+    double time;
+    int position;
+    int speed;
+};
+bool cmp(const car& c1,const car& c2){
+    return c1.position>c2.position;
+}
+class Solution {
+public:
+    int carFleet(int target, vector<int>& position, vector<int>& speed) {
+        if(position.empty())
+            return 0;
+        int fleet=1;
+        vector<car> cars(position.size());
+        for(int i=0;i<position.size();i++){
+            cars[i].position=position[i];
+            cars[i].speed=speed[i];
+            cars[i].time=(double)(target-position[i])/speed[i];
+        }
+        sort(cars.begin(),cars.end(),cmp);
+        for(int i=0;i<cars.size()-1;i++){         
+            if(cars[i].time<cars[i+1].time)
+                fleet++;
+            else
+                cars[i+1].time=cars[i].time;
+        }
+        return fleet;
+    }
+};

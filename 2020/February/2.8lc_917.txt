@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isletter(char c){
+        return c<='z'&&c>='a'||c<='Z'&&c>='A';
+    }
+    string reverseOnlyLetters(string S) {
+        int p1=0,p2=S.size()-1;
+        while(true){
+            while(p1<p2&&!isletter(S[p1]))
+                p1++;
+            while(p2>p1&&!isletter(S[p2]))
+                p2--;
+            if(p1<p2){
+                char temp=S[p1];
+                S[p1]=S[p2];
+                S[p2]=temp;
+                p1++;
+                p2--;
+            }else
+                break;
+        }
+        return S;
+    }
+};

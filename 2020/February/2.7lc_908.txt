@@ -1,0 +1,7 @@
+class Solution {
+public:
+    int smallestRangeI(vector<int>& A, int K) {
+        int max=*max_element(A.begin(),A.end()),min=*min_element(A.begin(),A.end()),n=max-min-2*K;
+        return n>0?n:0;
+    }
+};

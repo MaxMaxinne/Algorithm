@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool finishable(int speed,vector<int>& piles,int H){
+        int time=0;
+        for(int ele:piles)
+            time+=ceil((double)ele/speed);
+        return time<=H;
+    }
+    int minEatingSpeed(vector<int>& piles, int H) {
+        int upperbound=*max_element(piles.begin(),piles.end()),lowerbound=1,speed=0;
+        while(lowerbound<upperbound){
+            speed=lowerbound+((upperbound-lowerbound)>>1);
+            if(!finishable(speed,piles,H)){
+                if(upperbound-lowerbound<=1)
+                    lowerbound++;
+                else
+                    lowerbound=speed;
+            }
+            else
+                upperbound=speed;
+        }
+        return lowerbound;
+    }
+};
