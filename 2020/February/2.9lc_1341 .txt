@@ -1,0 +1,32 @@
+class row{
+public:
+    int index;
+    int power;
+};
+bool cmp(const row& r1,const row& r2){
+    if(r1.power==r2.power)
+        return r1.index<r2.index;
+    return r1.power<r2.power;
+}
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        vector<row> rows(mat.size());
+        for(int i=0;i<mat.size();i++){
+            int power=0;
+            for(int ele:mat[i]){
+                if(ele!=1)
+                    break;
+                power++;
+            }
+            rows[i].index=i;
+            rows[i].power=power;
+        }
+        sort(rows.begin(),rows.end(),cmp);
+        vector<int> ans(k);
+        for(int i=0;i<k;i++){
+            ans[i]=rows[i].index;
+        }
+        return ans;
+    }
+};

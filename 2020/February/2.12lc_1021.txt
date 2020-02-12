@@ -1,0 +1,18 @@
+class Solution {
+public:
+    string removeOuterParentheses(string S) {
+        int start=0,par=0;
+        string ans="";
+        for(int i=0;i<S.length();i++){
+            if(S[i]=='(')
+                par++;
+            else
+                par--;
+            if(par==0){
+                ans+=S.substr(start+1,i-start-1);
+                start=i+1;
+            }
+        }
+        return ans;
+    }
+};

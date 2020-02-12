@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool dfs(TreeNode* n,int num){
+        if(!n)
+            return true;
+        if(n->val==num)
+            return dfs(n->left,n->val)&&dfs(n->right,n->val);
+        return false;
+    }
+    bool isUnivalTree(TreeNode* root) {
+        return dfs(root,root->val);
+    }
+};
