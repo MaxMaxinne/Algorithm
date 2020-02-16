@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
+        vector<int> ans;
+        int alice=accumulate(A.begin(),A.end(),0),bob=accumulate(B.begin(),B.end(),0),gap=alice-bob;
+        sort(A.begin(),A.end());
+        sort(B.begin(),B.end());
+        int pa=0,pb=0;
+        while(pa<A.size()&&pb<B.size()){
+            if(2*(A[pa]-B[pb])<gap)
+                pa++;
+            else
+                if(2*(A[pa]-B[pb])>gap)
+                    pb++;
+                else
+                    break;
+        }
+        ans.push_back(A[pa]);
+        ans.push_back(B[pb]);
+        return ans;
+    }
+};
