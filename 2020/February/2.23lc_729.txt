@@ -1,0 +1,18 @@
+class MyCalendar {
+public:
+    set<pair<int,int>> events;
+    MyCalendar(){
+        events.insert({INT_MAX,INT_MAX});
+        events.insert({INT_MIN,INT_MIN});
+    }
+    bool book(int start, int end) {
+        auto iter=events.upper_bound({start,end});
+        if(iter->first<end)
+            return false;
+        iter--;
+        if(iter->second>start)
+            return false;
+        events.insert({start,end});
+        return true;
+    }
+};

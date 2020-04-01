@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void getStr(stack<char>& s,string str){
+        for(char c:str){
+            if(c=='#'&&!s.empty())
+                s.pop();
+            else
+                if(c!='#')
+                    s.push(c);
+        }
+    }
+    bool backspaceCompare(string S, string T) {
+        stack<char> s,t;
+        getStr(s,S);
+        getStr(t,T);
+        while(!s.empty()&&!t.empty()){
+            if(s.top()==t.top()){
+                s.pop();
+                t.pop();
+            }else
+                break;
+        }
+        return s.empty()&&t.empty();
+    }
+};

@@ -1,0 +1,18 @@
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        TreeNode* n1=root,*n2=root;
+        while(n2){
+            n1=n2;
+            if(n1->val<val)
+                n2=n1->right;
+            else
+                n2=n1->left;
+        }
+        if(n1->val<val)
+            n1->right=new TreeNode(val);
+        else
+            n1->left=new TreeNode(val);
+        return root;
+    }
+};

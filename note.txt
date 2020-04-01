@@ -302,3 +302,30 @@ https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-j
 不要忘记fakehead的作用
 四十一、重塑矩阵(lc_566)
 这道题给我们的提醒是多维矩阵的问题能不能转化为一维矩阵来解决。
+四十二、糖果交换
+这个题目有更优的数学解法，通过等式的变化使对两个数组的查找变为对一个数组的查找
+
+
+数学那么万能，为何不尝试用数学呢？
+已知 **爱丽丝** 拥有的糖果总数是 x，**鲍勃** 拥有的糖果总数是 y，他们需要交换的糖果为 [m, n]，其中 m 为 **爱丽丝** 需要交换的糖果，n 为 **鲍勃** 那么得到公式：
+
+x + n - m = y + m - n
+即：(x - y) / 2 = m - n;
+
+那么这样就简单的：
+
+> 暴力破解
+
+const fairCandySwap = (A, B) => {
+  const ASum = A.reduce((prev, next) => { return prev + next }, 0);
+  const BSum = B.reduce((prev, next) => { return prev + next }, 0);
+  const harf = (ASum - BSum) / 2;
+  for (let i = 0; i < A.length; i++) {
+    if (B.includes(A[i] - harf)) {
+      return [A[i], A[i] - harf];
+    }
+  }
+};
+转自LeetCode jsliang在该题官方题解下的评论
+四十二、旋转数字(lc_844)
+有三种方法，除了最明显想到的外，还有

@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        int max = -50001, min = 50001;
+        for (int num: nums) {
+            max = num>max?num:max;
+            min = num<min?num:min;
+        }
+        vector<int> counter(max - min + 1);
+        for (int num: nums) {
+            counter[num - min]++;
+        }
+        int id=0;
+        for (int num = min; num <= max; num++) {
+            int cnt = counter[num - min];
+            while (cnt-- > 0) {
+                nums[id++] = num;
+            }
+        }
+        return nums;
+    }
+};

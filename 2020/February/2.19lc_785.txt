@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool dfs(vector<int>& group,vector<vector<int>>& graph,int index,int col){
+        group[index]=col;
+        for(int ele:graph[index]){
+            if(group[ele]==col)
+                return false;
+            if(group[ele]==0&&!dfs(group,graph,ele,-col))
+                return false;
+        }
+        return true;
+    }
+    bool isBipartite(vector<vector<int>>& graph) {
+        vector<int> group(graph.size(),0);
+        for(int i=0;i<graph.size();i++){
+            if(group[i]!=0)
+                continue;
+            if(!dfs(group,graph,i,1))
+                return false;
+        }
+        return true;
+    }
+};
