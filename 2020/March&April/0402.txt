@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int height;
+    int width;
+    bool check(int i,int j){
+        if(i>=0&&j>=0&&i<height&&j<width)
+            return true;
+        return false;
+    }
+    void gameOfLife(vector<vector<int>>& board) {
+        height=board.size();
+        width=board[0].size();
+        int direction[]={-1,0,1};
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+                int alive=0;
+                for(int m=0;m<3;m++){
+                    for(int n=0;n<3;n++){
+                        int newi=i+direction[m],newj=j+direction[n];
+                        if((m!=1||n!=1)&&check(newi,newj)&&(board[newi][newj]==1||board[newi][newj]==-1))
+                            alive++;
+                    }
+                }
+                if(board[i][j]==1||board[i][j]==-1){
+                    if(alive<2)
+                        board[i][j]=-1;
+                    else
+                        if(alive>3)
+                            board[i][j]=-1;
+                }else{
+                    if(alive==3)
+                        board[i][j]=2;
+                }
+            }
+        }
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+                if(board[i][j]==2)
+                    board[i][j]=1;
+                else
+                    if(board[i][j]==-1)
+                        board[i][j]=0;
+            }
+        }
+    }
+};
